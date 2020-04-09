@@ -1,0 +1,15 @@
+<launch>
+  <!--  There is a warning, and its better to use joint_state_publisher_gui instead of joint_state_publisher.
+There is no need for <arg name="gui" default="true"/> or <param name="use_gui" value="$(arg gui)"/>.
+[WARN] [1586184337.782645]: The 'use_gui' parameter was specified, which is deprecated.
+We'll attempt to find and run the GUI, but if this fails you should install the 'joint_state_publisher_gui' package instead and run that.
+This backwards compatibility option will be removed in Noetic. -->
+
+  <!--  <arg name="gui" default="true"/>-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find myworkcell_support)/urdf/workcell.xacro'" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+    <!--    <param name="use_gui" value="$(arg gui)"/>-->
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz"/>
+</launch>
