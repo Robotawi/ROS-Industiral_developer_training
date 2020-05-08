@@ -18,5 +18,8 @@ The goal is to learn how to build custom service files and utilize them in a req
 3. Add more functionality (service server) to the above mentioned node in (Ex 1.4) to be able to respond to requests about the last detected pose.
 4. Write a service client that requests the pose information from the server in 3 and print it.
 
-  
+### Ex 2.2
+Creating launch files for starting different nodes.
+1. Get used to the idea behind support packages to contain launch files.
+2. Create a launch file that starts two nodes from different packages at once.
  
