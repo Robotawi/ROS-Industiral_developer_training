@@ -23,3 +23,10 @@ Creating launch files for starting different nodes.
 1. Get used to the idea behind support packages to contain launch files.
 2. Create a launch file that starts two nodes from different packages at once.
  
+ 
+### Ex 2.3
+The goal is to become familiar with ROS parameters
+1. Understand [private names](http://wiki.ros.org/Names#Graph) and loading parameters within [nodes](http://wiki.ros.org/roscpp_tutorials/Tutorials/AccessingPrivateNamesWithNodeHandle).
+2. Setting the request part of (Ex 2.0) according to the loaded parameter.
+3. Setting the parameter that belongs to a specific node from the launch file. 
+
