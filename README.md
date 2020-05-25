@@ -30,3 +30,13 @@ The goal is to become familiar with ROS parameters
 2. Setting the request part of (Ex 2.0) according to the loaded parameter.
 3. Setting the parameter that belongs to a specific node from the launch file. 
 
+
+### Ex 3.0
+Introducing Universal Robot Description Format (URDF) to describe robot kinematics and perform collision detection.
+1. Make a urdf file for the robot workcell and insert virtual links (without geometry) for the world and camera frames.
+2. Insert basic visual and collision geometries and set joints between them and the world frame.
+3. Visualize the setting described in the workcell urdf file through rviz.
+
+Not: It is better to clarify that ROS packages for robot_state_publisher and joint_state_publisher are needed with rviz for the visualization. It would be more interesting for the beginners to know that to visualize robots rviz needs transformation frames.
+The flow is that the joint_state_publlisher publishes the joint states and robot_state_publisher subscribes to it and publishes the calculated transformation frames (TF) given the urdf file and the joint_states (angles). Rviz subscribes to the (TF) topic and visualizes it along with the model of the robot.    
+ 
