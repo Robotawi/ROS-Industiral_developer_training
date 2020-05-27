@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<robot name="myworkcell" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="world"/>
+
+  <link name="body" >
+    <visual>
+      <geometry>
+        <mesh filename="package://mylabworkcell_support/meshes/body/urbody.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://mylabworkcell_support/meshes/body/urbody.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="camera_frame"/>
+
+  <joint name="world_to_body" type="fixed">
+    <parent link="world"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="world_to_camera" type="fixed">
+    <parent link="world"/>
+    <child link="camera_frame"/>
+    <origin xyz="-0.25 -0.5 1.25" rpy="0 3.14159 0"/>
+  </joint>
+
+  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro"/>
+  <xacro:ur3_robot prefix="rgt_" joint_limited="true"/>
+  <xacro:ur3_robot prefix="lft_" joint_limited="true"/>
+
+  <!--
+  <joint name="table_to_robot" type="fixed">
+    <parent link="table"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  -->
+  <joint name="body_to_rgtarm" type="fixed">
+    <parent link="body"/>
+    <child link="rgt_base_link"/>
+    <origin xyz="0 -0.258 1.610" rpy="2.35619 0 0"/>
+  </joint>
+
+  <joint name="body_to_lft_arm" type="fixed">
+    <parent link="body"/>
+    <child link="lft_base_link"/>
+    <origin xyz="0 0.258 1.610" rpy="-2.35619 0 0"/>
+  </joint>
+</robot>
