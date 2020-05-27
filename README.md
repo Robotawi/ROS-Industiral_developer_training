@@ -1,5 +1,6 @@
 # ros-industiral_developer_training
-
+I use this repo to summarize and comment on ROS-Industrial developer training material while working on the different exercises.
+ 
 ### Ex 1.3 
 The goal is to become familiar with ROS package and node concepts.
 1. Create a myworkcell_core package.
@@ -38,5 +39,23 @@ Introducing Universal Robot Description Format (URDF) to describe robot kinemati
 3. Visualize the setting described in the workcell urdf file through rviz.
 
 Not: It is better to clarify that ROS packages for robot_state_publisher and joint_state_publisher are needed with rviz for the visualization. It would be more interesting for the beginners to know that to visualize robots rviz needs transformation frames.
-The flow is that the joint_state_publlisher publishes the joint states and robot_state_publisher subscribes to it and publishes the calculated transformation frames (TF) given the urdf file and the joint_states (angles). Rviz subscribes to the (TF) topic and visualizes it along with the model of the robot.    
- 
+The flow is that the joint_state_publlisher publishes the joint states and robot_state_publisher subscribes to it and publishes the calculated transformation frames (TF) given the urdf file and the joint_states (angles). Rviz subscribes to the (TF) topic and visualizes it along with the model of the robot.
+
+### Ex 3.1
+Learn how to represent robot workcells using XACRO files. XACRO macros allows the use of urdf files different times without the need of duplicating the urdf file elements.
+We want to design a workcell that has a ur5 robot assembled to a table.
+1. Convert the workcell urdf created in Ex 3.0 to a XACRO file (the one that contains the table).
+2. Include the XACRO file of the robot.
+3. Connect the robot to the table.
+4. Make a launch file that loads the urdf model and visualizes the robot.
+
+Resources that ought to be examined well:
+* [ROS URDF Tutorials](http://wiki.ros.org/urdf/Tutorials)
+* [The Construct My Robotic Manipulator](https://www.youtube.com/watch?v=Ale55LcdZeE&list=PLK0b4e05LnzYpDnNeWJcQLju7JfJFX-lk)
+* [ROS Industrial Creating URDF for an Industrial Robot](http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot)
+
+
+Things are becoming very interested. I made a Xacro file for my research workcell. 
+I am planning for extend it and deploy it in my future work.
+
+![text](./support-files/myresearchworkcell.png?raw=true "My research dual-arm workcell")
