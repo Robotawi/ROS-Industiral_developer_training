@@ -1,5 +1,5 @@
 # ros-industiral_developer_training
-I use this repo to summarize and comment on ROS-Industrial developer training material while working on the different exercises.
+I use this repo to summarize and comment my progress working [ROS-Industrial developer training](https://industrial-training-master.readthedocs.io/en/melodic/index.html) material.
  
 ### Ex 1.3 
 The goal is to become familiar with ROS package and node concepts.
