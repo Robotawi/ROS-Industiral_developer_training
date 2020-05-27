@@ -51,7 +51,6 @@ We want to design a workcell that has a ur5 robot assembled to a table.
 
 Resources that ought to be examined well:
 * [ROS URDF Tutorials](http://wiki.ros.org/urdf/Tutorials)
-* [The Construct My Robotic Manipulator](https://www.youtube.com/watch?v=Ale55LcdZeE&list=PLK0b4e05LnzYpDnNeWJcQLju7JfJFX-lk)
 * [ROS Industrial Creating URDF for an Industrial Robot](http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot)
 
 
@@ -59,3 +58,36 @@ Things are becoming very interested. I made a Xacro file for my research workcel
 I am planning for extend it and deploy it in my future work.
 
 ![text](./support-files/myresearchworkcell.png?raw=true "My research dual-arm workcell")
+
+
+### Ex 3.2
+The goal is to introduce ROS TF and use it for calculating the transformation matrix between the detected part in Ex. 2.0 with respect to the world frame.
+The service callback function now is returning the pose of the detected object in the camera frame. This is to be fixed.
+1. Inside the service callback, read the last AR marker pose msg and convert it into TF object cam_to_target.
+2. Calculate the transformation from the camera to the base frame determined by the `request.base_frame` and save it to req_to_cam.
+3. Calc the world_to_target easy by just multiplication, and this is clearly the reason why we convert to TF.
+4. Convert back the TF to pose msg and set the response to true.
+
+Note: 
+The naming convention is not clear. It's better to be read from right to left.
+Example: cam_to_target actually describes the transformation of the target object with respect to the reference frame of the camera.
+
+It is a good idea to revisit Ex. 2.0 and make it as a whole task from the beginning.
+Reference:
+* [ROS TF tutorials](http://wiki.ros.org/tf/Tutorials)
+* [TF C++ API](http://docs.ros.org/melodic/api/tf/html/c++/)
+
+### Ex 3.3
+The aim here is to know how to create a moveit config package for industrial robots. This creates launch files and configuration files required to be able to use the robot with moveit motion control nodes.
+The exercise creates a config package for the workcell robot in Ex 3.1. The tutorial is very detailed and easy to follow.
+
+### Ex 3.4
+This exercise is about how to interface with moveit using its rviz plugin. It shows different motion planning algorithms and their performance. An obstacle is introduced in the robot work space to see the collision avoidance capability.
+
+
+
+
+
+### Other interesting ROS industrial robots resources:
+- [ ] [The Construct My Robotic Manipulator.](https://www.youtube.com/watch?v=Ale55LcdZeE&list=PLK0b4e05LnzYpDnNeWJcQLju7JfJFX-lk)
+- [ ] [Moveit! Camp, robotic manipulation using Sawyer robot.](https://www.youtube.com/watch?v=3wnX7teWIFQ&list=PLK0b4e05LnzYkQR6N4qrSsn7f_L-DO3VP)
