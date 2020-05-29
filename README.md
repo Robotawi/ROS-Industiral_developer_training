@@ -84,10 +84,31 @@ The exercise creates a config package for the workcell robot in Ex 3.1. The tuto
 ### Ex 3.4
 This exercise is about how to interface with moveit using its rviz plugin. It shows different motion planning algorithms and their performance. An obstacle is introduced in the robot work space to see the collision avoidance capability.
 
+### EX 4.0
+Learn motion planning in code with moveit C++ API. The main idea is that moveit interfaces with the robot as using move_group/planning_group/joint_model_group to operate upon in the planning process.
+The idea behind the move_group is very straight forward. Here are the steps of writing a simple node:
+1. Include the header file of the move group interface class, and create an instance of it `moveit::planning_interface::MoveGroupInterface move_group`.
+2. Set the move_group reference frame `move_group.setPoseReferenceFrame(base_frame)`.
+3. Set the target pose of the arm end link using the pose object returned from the localizer `move_group.setPoseTarget(srv.res.pose)`.
+4. Make the motion with `move_group.move()`.
+
+Now, we just need to build the workspace and run our new motion planning node. There is an error in the ROS-I tutorials at the moment. It describes how to run the planned motion as follows
+```
+roslaunch myworkcell_moveit_config myworkcell_planning_execution.launch
+roslaunch myworkcell_support workcell.launch
+```
+However, the moveit_config package doesn't have a myworkcell_planning_execution.launch file. I found that this file can be compensated for using the demo.launch file as follows:
+```
+roslaunch myworkcell_moveit_config demo.launch
+roslaunch myworkcell_support workcell.launch
+```
 
 
 
-
-### Other interesting ROS industrial robots resources:
+### Other interesting ROS industrial related resources:
+- [ ] [Moveit Developers Tutorials.](https://ros-planning.github.io/moveit_tutorials)
 - [ ] [The Construct My Robotic Manipulator.](https://www.youtube.com/watch?v=Ale55LcdZeE&list=PLK0b4e05LnzYpDnNeWJcQLju7JfJFX-lk)
 - [ ] [Moveit! Camp, robotic manipulation using Sawyer robot.](https://www.youtube.com/watch?v=3wnX7teWIFQ&list=PLK0b4e05LnzYkQR6N4qrSsn7f_L-DO3VP)
+
+### More general but still related to the same topics:
+- [ ] Have a more thorough look at the reference examples of the exercises
