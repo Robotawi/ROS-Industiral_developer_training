@@ -86,7 +86,7 @@ The exercise creates a config package for the workcell robot in Ex 3.1. The tuto
 This exercise is about how to interface with moveit using its rviz plugin. It shows different motion planning algorithms and their performance. An obstacle is introduced in the robot work space to see the collision avoidance capability.
 
 ### EX 4.0
-Learn motion planning in code with moveit C++ API. The main idea is that moveit interfaces with the robot as using move_group/planning_group/joint_model_group to operate upon in the planning process.
+Learn motion planning in code with [moveit C++ API](http://docs.ros.org/indigo/api/pr2_moveit_tutorials/html/planning/src/doc/move_group_interface_tutorial.html#). The main idea is that moveit interfaces with the robot as using move_group/planning_group/joint_model_group to operate upon in the planning process.
 The idea behind the move_group is very straight forward. Here are the steps of writing a simple node:
 1. Include the header file of the move group interface class, and create an instance of it `moveit::planning_interface::MoveGroupInterface move_group`.
 2. Set the move_group reference frame `move_group.setPoseReferenceFrame(base_frame)`.
@@ -103,7 +103,11 @@ However, the moveit_config package doesn't have a myworkcell_planning_execution.
 roslaunch myworkcell_moveit_config demo.launch
 roslaunch myworkcell_support workcell.launch
 ```
-This will get the planned motion displayed as expected.
+This will get the planned motion visualized in rviz as expected.
+
+### EX 4.1
+Using moveit for cartesian path planning. This is if we care about how the robot ought to move **between** two points
+
 
 ### Other interesting ROS industrial related resources:
 - [ ] [Moveit Developers Tutorials.](https://ros-planning.github.io/moveit_tutorials)
